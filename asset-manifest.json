@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/AtlanticCity_CRM_Project/static/css/main.494e0e4d.css",
+    "main.js": "/AtlanticCity_CRM_Project/static/js/main.255f7cba.js",
+    "index.html": "/AtlanticCity_CRM_Project/index.html",
+    "main.494e0e4d.css.map": "/AtlanticCity_CRM_Project/static/css/main.494e0e4d.css.map",
+    "main.255f7cba.js.map": "/AtlanticCity_CRM_Project/static/js/main.255f7cba.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.494e0e4d.css",
+    "static/js/main.255f7cba.js"
+  ]
+}
