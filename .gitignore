@@ -1,0 +1,14 @@
+# Dependencias
+node_modules/
+venv/
+env/
+__pycache__/
+*.pyc
+
+# Archivos de sistema
+.DS_Store
+Thumbs.db
+
+# Configuración local
+.env
+db.sqlite3

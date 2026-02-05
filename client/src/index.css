@@ -1,0 +1,939 @@
+/* --- VARIABLES GLOBALES --- */
+:root {
+  --sidebar-bg: #0a1429; /* Azul oscuro del menú */
+  --gold-accent: #fbbf24; /* Dorado */
+  --gold-dark: #d4af37; /* Dorado oscuro para bordes */
+  --main-bg: #f8f9fa; /* Fondo gris claro del Dashboard */
+  --text-dark: #333;
+}
+
+body {
+  margin: 0;
+  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+  background-color: var(
+    --main-bg
+  ); /* Por defecto es claro (para el Dashboard) */
+}
+
+/* =========================================
+    ESTILOS DEL LOGIN (Casino Dark Mode)
+    ========================================= */
+.login-bg {
+  /* Forzamos que ocupe toda la pantalla sobre el fondo blanco */
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+
+  /* Imagen de fondo y oscurecimiento */
+  background:
+    linear-gradient(rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0.85)),
+    url("https://images.unsplash.com/photo-1596838132731-3301c3fd4317?q=80&w=2070&auto=format&fit=crop");
+  background-size: cover;
+  background-position: center;
+
+  /* Centrar la tarjeta */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.card-glass {
+  background: rgba(20, 20, 20, 0.85) !important; /* Negro semitransparente */
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--gold-dark) !important;
+  color: white;
+  box-shadow: 0 0 25px rgba(212, 175, 55, 0.3); /* Resplandor dorado */
+}
+
+.btn-gold {
+  background-color: var(--gold-dark) !important;
+  border: none !important;
+  color: #000 !important;
+  font-weight: bold !important;
+  letter-spacing: 1px;
+  transition: all 0.3s ease;
+}
+
+.btn-gold:hover {
+  background-color: #b5952f !important;
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.4);
+}
+
+.text-gold {
+  color: var(--gold-dark) !important;
+}
+
+/* Inputs oscuros para el Login */
+.input-dark {
+  background-color: #b5b5b5 !important;
+  border: 1px solid #555 !important;
+  color: white !important;
+}
+
+.input-dark:focus {
+  background-color: #b5b5b5 !important;
+  border-color: var(--gold-dark) !important;
+  box-shadow: 0 0 5px rgba(212, 175, 55, 0.5) !important;
+}
+
+/* =========================================
+    ESTILOS DEL DASHBOARD (Prototipo Limpio)
+    ========================================= */
+.sidebar {
+  min-height: 100vh;
+  background-color: var(--sidebar-bg);
+  color: white;
+  padding: 20px;
+}
+
+.brand-logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 1px;
+  margin-bottom: 40px;
+}
+
+.brand-underline {
+  height: 3px;
+  width: 50px;
+  background-color: var(--gold-accent);
+  margin-top: 5px;
+}
+
+.nav-link-custom {
+  color: rgba(255, 255, 255, 0.7) !important;
+  padding: 12px 15px;
+  border-radius: 8px;
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  text-decoration: none;
+  transition: all 0.2s;
+}
+
+.nav-link-custom:hover {
+  color: white !important;
+  background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-link-custom.active {
+  background-color: var(--gold-accent) !important;
+  color: var(--sidebar-bg) !important; /* Texto oscuro sobre fondo dorado */
+  font-weight: bold;
+}
+
+.nav-icon {
+  margin-right: 12px;
+  font-size: 1.1rem;
+}
+
+.main-content {
+  padding: 30px;
+  background-color: var(--main-bg);
+}
+
+.card-kpi {
+  border: none;
+  border-radius: 12px;
+  box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+  background-color: white; /* Asegurar fondo blanco en dashboard */
+  transition: transform 0.3s;
+}
+
+.card-kpi:hover {
+  transform: translateY(-5px);
+}
+
+.icon-wrapper {
+  width: 50px;
+  height: 50px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  margin-bottom: 15px;
+}
+
+/*======================
+sidebar side bar sidebar
+
+========================*/
+.sidebar {
+  width: 260px;
+  height: 100vh;
+  background-color: #111; /* Negro Fondo */
+  color: #fff;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #333;
+  position: fixed; /* Fijo a la izquierda */
+  left: 0;
+  top: 0;
+}
+
+.sidebar-logo {
+  padding: 30px 20px;
+  border-bottom: 1px solid #222;
+}
+
+.sidebar-logo h2 {
+  font-size: 24px;
+  margin: 0;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+.sidebar-logo span {
+  color: #d4af37; /* Dorado Atlantic City */
+  font-weight: bold;
+}
+
+.sidebar-menu {
+  flex: 1;
+  padding: 20px 0;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.sidebar-menu a {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 15px 25px;
+  text-decoration: none;
+  color: #888;
+  font-size: 16px;
+  transition: all 0.3s;
+}
+
+.sidebar-menu a:hover,
+.sidebar-menu a.active {
+  background: rgba(212, 175, 55, 0.1); /* Dorado transparente */
+  color: #d4af37; /* Texto Dorado */
+  border-right: 3px solid #d4af37;
+}
+
+.sidebar-footer {
+  padding: 20px;
+  border-top: 1px solid #222;
+}
+
+.logout-btn {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #d9534f !important; /* Rojo suave para salir */
+  text-decoration: none;
+  cursor: pointer;
+}
+
+/* =========================================
+    ESTILOS DE LA PÁGINA CLIENTES
+   ========================================= */
+
+.clientes-container {
+  padding: 30px;
+  background-color: #000; /* Fondo negro puro */
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* Cabecera */
+.page-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.page-title {
+  font-size: 28px;
+  margin: 0;
+  color: #fff;
+}
+
+.page-subtitle {
+  color: #888;
+  margin-top: 5px;
+  font-size: 14px;
+}
+
+/* Botones específicos de esta página */
+.btn-outline {
+  background: transparent;
+  border: 1px solid #333;
+  color: #ccc;
+  padding: 8px 15px;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.btn-outline:hover {
+  border-color: #d4af37;
+  color: #d4af37;
+}
+
+/* Aseguramos que el btn-gold se alinee bien con iconos */
+.page-header .btn-gold {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+/* Barra de herramientas */
+.toolbar {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  gap: 15px;
+  flex-wrap: wrap; /* Para que se adapte en pantallas chicas */
+}
+
+.search-bar {
+  background-color: #1a1a1a;
+  border: 1px solid #333;
+  border-radius: 6px;
+  padding: 0 15px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex: 1;
+  max-width: 400px;
+}
+
+.search-bar input {
+  background: transparent;
+  border: none;
+  color: #fff;
+  width: 100%;
+  padding: 10px 0;
+  outline: none;
+}
+
+.filters {
+  display: flex;
+  gap: 10px;
+}
+
+/* Tabla Estilizada */
+.table-container {
+  background-color: #111;
+  border-radius: 8px;
+  border: 1px solid #222;
+  overflow-x: auto; /* Scroll horizontal si la tabla es muy ancha */
+}
+
+.clients-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  min-width: 800px; /* Ancho mínimo para que no se deforme */
+}
+
+.clients-table th {
+  background-color: #1a1a1a;
+  color: #888;
+  padding: 15px 20px;
+  font-weight: 500;
+  font-size: 13px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.clients-table td {
+  padding: 15px 20px;
+  border-bottom: 1px solid #222;
+  color: #eee;
+  vertical-align: middle;
+}
+
+.clients-table tr:hover {
+  background-color: #1a1a1a; /* Efecto al pasar el mouse por la fila */
+}
+
+/* Elementos dentro de la tabla */
+.client-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.client-avatar {
+  width: 35px;
+  height: 35px;
+  background-color: #333;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #d4af37;
+  font-weight: bold;
+  font-size: 14px;
+  border: 1px solid #444;
+}
+
+/* Etiquetas de Nivel (Badges) */
+.badge {
+  padding: 5px 12px;
+  border-radius: 20px;
+  font-size: 11px;
+  font-weight: bold;
+  text-transform: uppercase;
+  display: inline-block;
+  text-align: center;
+  min-width: 70px;
+}
+
+.badge-platinum {
+  background-color: rgba(229, 228, 226, 0.15);
+  color: #e5e4e2;
+  border: 1px solid #555;
+}
+
+.badge-gold {
+  background-color: rgba(212, 175, 55, 0.15);
+  color: #d4af37;
+  border: 1px solid #7a6620;
+}
+
+.badge-silver {
+  background-color: rgba(192, 192, 192, 0.15);
+  color: #c0c0c0;
+  border: 1px solid #666;
+}
+
+.badge-default {
+  background-color: #222;
+  color: #666;
+  border: 1px solid #333;
+}
+
+/* Botón de acciones (los 3 puntitos) */
+.btn-icon {
+  background: transparent;
+  border: none;
+  color: #666;
+  cursor: pointer;
+  padding: 5px;
+  border-radius: 4px;
+  transition: 0.2s;
+}
+
+.btn-icon:hover {
+  color: #fff;
+  background-color: #333;
+}
+
+/* =========================================
+    ARREGLO DE LAYOUT (EL SALVAVIDAS)
+   ========================================= */
+
+/* 1. Aseguramos que el Sidebar esté siempre encima y a la izquierda */
+.sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 260px; /* Ancho fijo */
+  height: 100vh;
+  z-index: 1000; /* ¡IMPORTANTE! Esto lo pone por encima de todo */
+  background-color: #111;
+  overflow-y: auto; /* Si el menú es muy largo, permite scroll */
+}
+
+/* 2. El contenedor del contenido principal */
+.layout-content {
+  margin-left: 260px; /* Empuja el contenido a la derecha EXACTAMENTE lo que mide el sidebar */
+  width: calc(100% - 260px); /* El ancho es el total menos el sidebar */
+  min-height: 100vh;
+  background-color: #f4f6f8; /* Un gris muy suave para que resalten las tarjetas blancas */
+  position: relative;
+}
+
+/* Ajuste para pantallas muy grandes */
+.layout-wrapper {
+  display: flex;
+  width: 100%;
+}
+/* =========================================
+   ESTILOS DASHBOARD DARK MODE
+   ========================================= */
+
+/* Fondo general del Dashboard */
+.dashboard-container {
+  background-color: #000 !important; /* Negro Puro */
+  min-height: 100vh;
+  color: #fff;
+}
+
+/* Tarjetas Oscuras */
+.card-dark {
+  background-color: #111 !important; /* Un gris muy oscuro (casi negro) */
+  border: 1px solid #222 !important; /* Borde sutil */
+  color: #fff !important;
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+/* Títulos de las tarjetas */
+.card-title-dark {
+  color: #fff !important;
+  font-weight: bold;
+  margin-bottom: 20px;
+}
+
+/* Textos secundarios (antes eran grises) */
+.text-muted-dark {
+  color: #888 !important;
+}
+
+/* Ajuste para los íconos con fondo (hacerlos más brillantes en modo oscuro) */
+.icon-box {
+  width: 45px;
+  height: 45px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 12px;
+}
+
+/* Colores específicos para modo oscuro */
+.bg-primary-dark {
+  background-color: rgba(13, 110, 253, 0.2);
+  color: #6ea8fe;
+}
+.bg-success-dark {
+  background-color: rgba(25, 135, 84, 0.2);
+  color: #75b798;
+}
+.bg-warning-dark {
+  background-color: rgba(255, 193, 7, 0.2);
+  color: #ffda6a;
+}
+.bg-danger-dark {
+  background-color: rgba(220, 53, 69, 0.2);
+  color: #ea868f;
+}
+
+/* Tooltip de los gráficos */
+.chart-tooltip {
+  background-color: #222 !important;
+  border: 1px solid #444 !important;
+  color: #fff !important;
+  border-radius: 8px;
+  padding: 10px;
+}
+
+/* Estilos para el Modal de Registro */
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.modal-content {
+  background: #1a1a1a;
+  padding: 30px;
+  border-radius: 15px;
+  width: 450px;
+  border: 1px solid #d4af37; /* Borde dorado Atlantic */
+  color: white;
+}
+
+.form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.form-grid input,
+.form-grid select {
+  padding: 10px;
+  background: #2a2a2a;
+  border: 1px solid #444;
+  color: white;
+  border-radius: 5px;
+}
+
+/* =========================================
+    SCROLLBAR PERSONALIZADO (DARK MODE)
+   ========================================= */
+
+/* Ancho de la barra */
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px; /* Para scroll horizontal si hubiera */
+}
+
+/* El "carril" o fondo de la barra */
+::-webkit-scrollbar-track {
+  background: #000; /* Negro puro para que se funda con el fondo */
+}
+
+/* El "pulgar" o la parte que se mueve */
+::-webkit-scrollbar-thumb {
+  background: #333; /* Gris oscuro elegante */
+  border-radius: 5px; /* Bordes redondeados */
+  border: 2px solid #000; /* Un pequeño borde para separarlo */
+}
+
+/* Cuando pasas el mouse por encima de la barra */
+::-webkit-scrollbar-thumb:hover {
+  background: #d4af37; /* ¡Se pone dorado al tocarlo! Toque premium */
+}
+.login-error-message {
+    background-color: rgba(220, 53, 69, 0.15); /* Fondo rojo transparente */
+    color: #ff6b6b; /* Texto rojo claro (legible en fondo oscuro) */
+    border: 1px solid #ff6b6b;
+    padding: 10px;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 0.9rem;
+    margin-bottom: 15px; /* Espacio antes del botón */
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+/* =========================================
+   ESTILOS DEL MÓDULO DE CAJA (CORREGIDO)
+   ========================================= */
+
+/* 1. EL CONTENEDOR PRINCIPAL (La solución a la pantalla blanca) */
+.caja-container {
+  background-color: #121212; /* Fondo NEGRO PROFUNDO */
+  min-height: 100vh;         /* Ocupa toda la altura de la pantalla */
+  width: 100%;               /* Ocupa todo el ancho */
+  padding: 2rem;
+  color: white;              /* Texto blanco */
+  box-sizing: border-box;
+  animation: fadeIn 0.5s ease-in;
+}
+
+/* Encabezados */
+.caja-header h1 {
+  font-size: 2rem;
+  font-weight: bold;
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.caja-subtitle {
+  color: #888; /* Gris suave */
+  margin-bottom: 2rem;
+}
+
+/* 2. GRID DE 2 COLUMNAS */
+.caja-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+  gap: 2rem;
+}
+
+@media (max-width: 768px) {
+  .caja-grid {
+    grid-template-columns: 1fr; /* En celular se vuelve una sola columna */
+  }
+}
+
+/* 3. TARJETAS (CARDS) CON EFECTO VIDRIO */
+.caja-card {
+  background-color: rgba(30, 30, 30, 0.6); /* Gris oscuro translúcido */
+  border: 1px solid #333;
+  border-radius: 15px;
+  padding: 2rem;
+  backdrop-filter: blur(10px); /* Efecto borroso detrás */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.card-title {
+  color: #d4af37; /* COLOR DORADO */
+  font-size: 1.3rem;
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-weight: 600;
+  border-bottom: 1px solid #333;
+  padding-bottom: 10px;
+}
+
+/* 4. INPUTS Y FORMULARIOS */
+.input-group {
+  display: flex;
+  gap: 10px;
+}
+
+.caja-input {
+  width: 100%;
+  background-color: #000; /* Fondo negro para el input */
+  border: 1px solid #444;
+  color: white;
+  padding: 14px;
+  border-radius: 8px;
+  outline: none;
+  font-size: 1rem;
+  transition: all 0.3s;
+}
+
+.caja-input:focus {
+  border-color: #d4af37; /* Borde dorado al escribir */
+  box-shadow: 0 0 0 2px rgba(212, 175, 55, 0.2);
+}
+
+.caja-input::placeholder {
+  color: #555;
+}
+
+/* 5. BOTONES DE TIPO (Recarga vs Fichas) */
+.type-selector {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  margin-bottom: 1.5rem;
+}
+
+.type-btn {
+  background: transparent;
+  border: 1px solid #444;
+  color: #aaa;
+  padding: 1.5rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.type-btn:hover {
+  border-color: #d4af37;
+  color: white;
+  background-color: rgba(212, 175, 55, 0.05);
+}
+
+.type-btn.active {
+  background-color: #d4af37; /* Fondo Dorado */
+  color: #000;              /* Texto Negro */
+  border-color: #d4af37;
+  font-weight: bold;
+  transform: scale(1.02);
+  box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+}
+
+/* 6. INPUT GIGANTE DE DINERO */
+.money-input {
+  font-size: 2.5rem;
+  text-align: center;
+  color: #d4af37;
+  font-weight: bold;
+  letter-spacing: 2px;
+  background-color: #050505;
+  border: 2px solid #333;
+  margin-bottom: 20px;
+}
+
+/* 7. RESULTADO DEL CLIENTE ENCONTRADO */
+.client-result {
+  margin-top: 1.5rem;
+  background-color: #000;
+  border: 1px solid #d4af37;
+  padding: 1rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  animation: slideDown 0.3s ease;
+}
+
+.client-icon {
+  background-color: #d4af37;
+  color: black;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+}
+
+/* Utilidades Extra */
+.disabled {
+  opacity: 0.3;
+  pointer-events: none;
+  filter: grayscale(1);
+}
+
+.text-error {
+  color: #ff4d4d;
+  font-size: 0.9rem;
+  margin-top: 10px;
+  background-color: rgba(255, 77, 77, 0.1);
+  padding: 8px;
+  border-radius: 4px;
+  text-align: center;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideDown {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+/* === ESTILOS PARA LOS NIVELES === */
+
+/* Estilo base para todas las badges */
+.badge {
+    padding: 5px 12px;
+    border-radius: 20px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    display: inline-block;
+    border: 1px solid transparent;
+}
+
+/* 🔵 NUEVO: Azul Neón */
+.badge-nuevo {
+    background-color: rgba(0, 123, 255, 0.15); /* Fondo azul transparente */
+    color: #3b82f6; /* Texto Azul brillante */
+    border-color: #3b82f6;
+}
+
+/* 🥉 BRONCE: Color Bronce/Cobre */
+.badge-bronce {
+    background-color: rgba(205, 127, 50, 0.15); /* Fondo bronce transparente */
+    color: #cd7f32; /* Texto Bronce */
+    border-color: #cd7f32;
+}
+
+/* 🥈 SILVER (Referencia) */
+.badge-silver {
+    background-color: rgba(192, 192, 192, 0.15);
+    color: #c0c0c0;
+    border-color: #c0c0c0;
+}
+
+/* 🥇 GOLD (Referencia) */
+.badge-gold {
+    background-color: rgba(212, 175, 55, 0.15);
+    color: #d4af37;
+    border-color: #d4af37;
+}
+
+/* 💎 PLATINUM (Referencia) */
+.badge-platinum {
+    background-color: rgba(229, 228, 226, 0.15);
+    color: #e5e4e2;
+    border-color: #e5e4e2;
+    box-shadow: 0 0 5px rgba(229, 228, 226, 0.3); /* Un pequeño brillo extra */
+}
+/* === PArche por solucion  AL FLASH BLANCO === */
+
+/* 1. El envoltorio principal que contiene Sidebar + Contenido */
+.layout-wrapper {
+    display: flex;
+    min-height: 100vh;
+    background-color: #000000; /* Asegura que el fondo general sea negro */
+    width: 100%;
+}
+
+/* 2. El área donde se cargan las páginas (Dashboard, Caja, etc.) */
+.layout-content {
+    flex-grow: 1;
+    background-color: #000000; /* Fondo negro SIEMPRE, antes de que cargue la página */
+    min-height: 100vh;
+    overflow-x: hidden;
+}
+
+/* 3. Aseguramos que el HTML y BODY sean negros también */
+body, html, #root {
+    background-color: #000000 !important;
+}
+/* === ANIMACIÓN DE ENTRADA GLOBAL === */
+
+/* 1. Definimos la animación: de invisible y un poco abajo, a visible y en su sitio */
+@keyframes entradaSuave {
+    from {
+        opacity: 0;
+        transform: translateY(10px); /* Empieza 10px más abajo */
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);    /* Termina en su lugar original */
+    }
+}
+
+/* 2. Se la aplicamos al contenido de TODAS las páginas */
+.layout-content {
+    animation: entradaSuave 0.4s ease-out; /* Dura 0.4 segundos, movimiento suave */
+}
+/* === COLORES DE NIVELES (BADGES) === */
+
+/* 1. NUEVO: Azul clásico (Bootstrap) */
+.badge-nuevo {
+    background-color: #0d6efd !important;
+    color: white !important;
+}
+
+/* 2. BRONCE: Color Cobre/Marrón rojizo (Para que no parezca naranja ni gris) */
+.badge-bronce {
+    background-color: #cd7f32 !important; /* Hexadecimal oficial del Bronce */
+    color: white !important;
+}
+
+/* 3. SILVER: Gris Oscuro/Acero (Mate) */
+.badge-silver {
+    background-color: #6c757d !important; /* Gris "Secondary" de Bootstrap */
+    color: white !important;
+    border: 1px solid #adb5bd; /* Borde sutil */
+}
+
+/* 4. GOLD: Dorado Intenso */
+.badge-gold {
+    background-color: #d4af37 !important;
+    color: black !important; /* Letra negra para que se lea bien */
+    font-weight: bold;
+}
+
+/* 5. PLATINUM: Blanco Hielo / Brillante (Muy diferente al Silver) */
+.badge-platinum {
+    background-color: #e0f7fa !important; /* Un blanco azulado muy claro */
+    color: #000 !important;
+    border: 1px solid #00bcd4; /* Borde cian sutil */
+    box-shadow: 0 0 8px rgba(0, 188, 212, 0.4); /* Pequeño resplandor */
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* 6. VETADO: Rojo Alerta */
+.badge-vetado {
+    background-color: #dc3545 !important;
+    color: white !important;
+}

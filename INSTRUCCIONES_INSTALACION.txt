@@ -1,0 +1,29 @@
+PROYECTO CRM ATLANTIC CITY - GRUPO 4
+====================================
+
+REQUISITOS PREVIOS:
+- Python instalado.
+- Node.js instalado.
+- MySQL activo (si aplica).
+
+INSTRUCCIONES DE INSTALACION:
+
+1. CONFIGURAR BACKEND (SERVER):
+   - Abrir terminal en la carpeta /server
+   - Crear entorno virtual: python -m venv venv
+   - Activar entorno: .\venv\Scripts\activate
+   - Instalar dependencias: pip install -r requirements.txt
+   - (Si usa MySQL) Importar el archivo 'base_de_datos.sql' en su gestor BD.
+   - Ejecutar migraciones: python manage.py migrate
+   - Iniciar servidor: python manage.py runserver
+
+2. CONFIGURAR FRONTEND (CLIENT):
+   - Abrir nueva terminal en la carpeta /client
+   - Instalar dependencias: npm install
+   - Iniciar React: npm run dev
+
+USUARIOS DE PRUEBA:
+usuario: Admin1 
+contraseña: Atlantic1234
+
+(Debe iniciar servidor antes de iniciar sesión para evitar confusión )
