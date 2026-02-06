@@ -34,7 +34,7 @@ const Clientes = () => {
     try {
       setCargando(true);
       // 4. LÓGICA DE BÚSQUEDA EN LA URL
-      let url = "http://https://atlanticcity-crm-project.onrender.com/api/clientes/";
+      let url = "https://atlanticcity-crm-project.onrender.com/api/clientes/";
       if (busqueda.trim() !== "") {
         url += `?search=${encodeURIComponent(busqueda)}`;
       }

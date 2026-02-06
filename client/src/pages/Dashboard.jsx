@@ -23,7 +23,7 @@ const Dashboard = () => {
     useEffect(() => {
         const fetchStats = async () => {
             try {
-                const response = await axios.get('http://https://atlanticcity-crm-project.onrender.com/api/dashboard-stats/');
+                const response = await axios.get('https://atlanticcity-crm-project.onrender.com/api/dashboard-stats/');
                 setStats(response.data);
             } catch (error) {
                 console.error("Error cargando dashboard:", error);

@@ -19,7 +19,7 @@ const Segmentacion = () => {
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await axios.get('http://https://atlanticcity-crm-project.onrender.com/api/segmentacion/');
+                const response = await axios.get('https://atlanticcity-crm-project.onrender.com/api/segmentacion/');
                 setChartData(response.data.chart); 
                 setKpis(response.data.kpis);       
                 setLoading(false);

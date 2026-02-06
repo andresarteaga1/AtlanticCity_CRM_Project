@@ -40,7 +40,7 @@ const Caja = () => {
         const nivelAnterior = clienteEncontrado.nivel;
 
         try {
-            const response = await axios.post('http://https://atlanticcity-crm-project.onrender.com/api/transacciones/', {
+            const response = await axios.post('https://atlanticcity-crm-project.onrender.com/api/transacciones/', {
                 cliente: clienteEncontrado.idcliente, 
                 monto: monto,
                 tipo: tipo

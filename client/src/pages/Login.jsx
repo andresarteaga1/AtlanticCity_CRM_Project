@@ -18,7 +18,7 @@ const Login = () => {
         setError("");
 
         try {
-            const response = await axios.post('http://https://atlanticcity-crm-project.onrender.com/api/login/', {
+            const response = await axios.post('https://atlanticcity-crm-project.onrender.com/api/login/', {
                 username: username, 
                 password: password
             });

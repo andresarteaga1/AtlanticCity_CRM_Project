@@ -50,7 +50,7 @@ const Reportes = () => {
     };
 
     const descargarExcel = () => {
-        let url = 'http://https://atlanticcity-crm-project.onrender.com/api/reportes/excel/';
+        let url = 'https://atlanticcity-crm-project.onrender.com/api/reportes/excel/';
         if (fechaInicio && fechaFin) {
             url += `?inicio=${fechaInicio}&fin=${fechaFin}`;
         }

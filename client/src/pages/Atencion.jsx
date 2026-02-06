@@ -100,7 +100,7 @@ const Atencion = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    await axios.delete(`http://https://atlanticcity-crm-project.onrender.com/api/atencion/${id}/eliminar/`);
+                    await axios.delete(`https://atlanticcity-crm-project.onrender.com/api/atencion/${id}/eliminar/`);
                     
                     Swal.fire({
                         title: 'Eliminado',
