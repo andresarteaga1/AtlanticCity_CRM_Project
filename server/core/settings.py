@@ -81,10 +81,10 @@ WSGI_APPLICATION = 'core.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'atlantic_city_crm',  # Nombre de la BD de Caján
-        'USER': 'root',               # Usuario
-        'PASSWORD': '30789963',       # Contraseña
-        'HOST': 'localhost',          # Asumimos que está en tu misma máquina
+        'NAME': 'atlantic_city_crm',  
+        'USER': 'root',               
+        'PASSWORD': '30789963',       
+        'HOST': 'localhost',         
         'PORT': '3306',
     }
 }

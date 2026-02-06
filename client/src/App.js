@@ -18,7 +18,6 @@ const Layout = ({ children }) => {
     return (
         <div className="layout-wrapper">
             <Sidebar />
-            {/* Al ponerle una 'key' distinta cada vez, React reinicia la animación */}
             <div className="layout-content" key={location.pathname}>
                 {children}
             </div>

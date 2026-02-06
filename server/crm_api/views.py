@@ -32,9 +32,8 @@ def login_api(request):
     user = authenticate(username=username, password=password)
 
     if user is not None:
-        # ¡ÉXITO! Las credenciales son válidas.
         return Response({
-            'token': 'token-falso-pero-seguro-123',  # Aquí podrías generar un token real si quisieras
+            'token': 'token-falso-pero-seguro-123',  
             'user': user.username,
             'message': 'Login exitoso'
         }, status=status.HTTP_200_OK)
@@ -106,7 +105,7 @@ def gestionar_cliente(request, pk):
         accion = request.data.get('accion')
         if accion == 'vetar':
             cliente.es_vetado = True
-            cliente.nivel = 'VETADO' # Visualmente cambiamos el nivel
+            cliente.nivel = 'VETADO' 
             cliente.save()
             return Response({'message': 'Cliente VETADO correctamente'}, status=status.HTTP_200_OK)
 
@@ -214,7 +213,7 @@ def dashboard_stats(request):
         
         data = {
             'total_clientes': total_clientes,
-            'ingresos_totales': ingresos, # Ahora esto envía solo lo del mes
+            'ingresos_totales': ingresos, #  esto envía solo lo del mes
             'total_promos': total_promos,
             'tickets_abiertos': tickets_abiertos,
             'top_clientes': top_clientes_data,
@@ -232,14 +231,10 @@ def dashboard_stats(request):
 @api_view(['GET'])
 def segmentacion_data(request):
     try:
-        # 1. CONTEO BLINDADO DE VETADOS 🛡️
-        # Busca clientes que tengan el check activado O que su nivel diga "VETADO"
         vetados_count = Cliente.objects.filter(
             Q(es_vetado=True) | Q(nivel__iexact='VETADO')
         ).count()
-
-        # 2. Contar el resto (Excluyendo a los que ya contamos como vetados)
-        # Usamos ~Q(...) para decir "NO son vetados"
+        
         no_vetados = Cliente.objects.filter(
             Q(es_vetado=False) & ~Q(nivel__iexact='VETADO')
         )
@@ -265,13 +260,13 @@ def segmentacion_data(request):
             'vip_total': platinum + gold,
             'nuevos_qty': nuevos,
             'regulares': silver + bronce,
-            'riesgo': vetados_count  # <--- Aquí pasamos el número correcto
+            'riesgo': vetados_count  
         }
 
         return Response({'chart': chart_data, 'kpis': kpis})
 
     except Exception as e:
-        print(f"Error Segmentacion: {e}") # Ver error en consola negra
+        print(f"Error Segmentacion: {e}")
         return Response({'error': str(e)}, status=500)
     
 # ======================================================
@@ -315,7 +310,7 @@ def reporte_transacciones(request):
     data = []
     for t in transacciones:
         data.append({
-            'id': t.id,  # <--- CORREGIDO: Antes decía t.idtransaccion
+            'id': t.id,  
             'fecha': t.fecha.strftime("%Y-%m-%d %H:%M"),
             'cliente': f"{t.cliente.nombres} {t.cliente.apellidos}",
             'dni': t.cliente.dni,
@@ -343,7 +338,7 @@ def exportar_excel(request):
 
     for t in transacciones:
         ws.append([
-            t.id,  # <--- CORREGIDO: Antes decía t.idtransaccion
+            t.id,  
             t.fecha.strftime("%Y-%m-%d %H:%M"),
             f"{t.cliente.nombres} {t.cliente.apellidos}",
             t.cliente.dni,
@@ -383,7 +378,7 @@ def gestion_atencion(request):
             data_tickets.append({
                 'id': t.idatencion,
                 'cliente': f"{t.idcliente.nombres} {t.idcliente.apellidos}",
-                'asunto': t.tiposolicitud,  # <--- CORREGIDO (minúsculas)
+                'asunto': t.tiposolicitud,  
                 'descripcion': t.descripcion,
                 'estado': t.estado,
                 'prioridad': prioridad_simulada,
@@ -403,7 +398,7 @@ def gestion_atencion(request):
             AtencionCliente.objects.create(
                 idcliente=cliente,
                 fechaatencion=timezone.now(),
-                tiposolicitud=data['tipo'],   # <--- ¡AQUÍ ESTABA EL ERROR! (Ahora está en minúsculas)
+                tiposolicitud=data['tipo'], 
                 descripcion=data['descripcion'],
                 estado='Abierto'
             )
