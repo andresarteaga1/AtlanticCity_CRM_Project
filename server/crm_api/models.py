@@ -41,7 +41,7 @@ class Juego(models.Model):
     categoria = models.CharField(max_length=50)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'tb_juegos'
         verbose_name = 'Juego'
         verbose_name_plural = 'Juegos'
@@ -59,7 +59,7 @@ class Promocion(models.Model):
     fechafin = models.DateField(db_column='fechaFin')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'tb_promociones'
         verbose_name = 'Promoción'
         verbose_name_plural = 'Promociones'
@@ -77,7 +77,7 @@ class Visita(models.Model):
     horavisita = models.TimeField(db_column='horaVisita')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'tb_visitas'
         verbose_name = 'Visita'
         verbose_name_plural = 'Visitas'
@@ -96,7 +96,7 @@ class Interaccion(models.Model):
     fechahoraregistro = models.DateTimeField(db_column='fechaHoraRegistro')
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'tb_interacciones'
         verbose_name = 'Interacción'
         verbose_name_plural = 'Interacciones'
