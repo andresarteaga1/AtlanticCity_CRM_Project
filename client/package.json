@@ -1,6 +1,5 @@
 {
   "name": "client",
-  "homepage": "https://andresarteaga1.github.io/AtlanticCity_CRM_Project",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
