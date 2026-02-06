@@ -19,7 +19,7 @@ const Reportes = () => {
             const inicio = inicioOverride !== null ? inicioOverride : fechaInicio;
             const fin = finOverride !== null ? finOverride : fechaFin;
 
-            let url = 'http://https://atlanticcity-crm-project.onrender.com/api/reportes/data/';
+            let url = 'https://atlanticcity-crm-project.onrender.com/api/reportes/data/';
             
             if (inicio && fin) {
                 url += `?inicio=${inicio}&fin=${fin}`;
