@@ -1,14 +1,24 @@
-# Dependencias
-node_modules/
+# --- Python & Django ---
+__pycache__/
+*.py[cod]
 venv/
 env/
-__pycache__/
-*.pyc
+db.sqlite3
 
-# Archivos de sistema
+# --- Sistema ---
 .DS_Store
 Thumbs.db
+.vscode/
 
-# Configuración local
-.env
-db.sqlite3
+# --- React / Frontend ---
+node_modules/
+client/node_modules/
+build/
+dist/
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*

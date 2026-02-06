@@ -16,7 +16,7 @@ from .models import Cliente, Transaccion, Promocion, AtencionCliente, Visita
 from .serializers import ClienteSerializer, TransaccionSerializer
 
 # ======================================================
-# 1. LOGIN(Validación Real)
+# 1. LOGIN
 # ======================================================
 @api_view(['POST'])
 def login_api(request):

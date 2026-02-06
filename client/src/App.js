@@ -1,5 +1,4 @@
 import React from 'react';
-// 1. IMPORTAMOS useLocation AQUÍ 👇
 import { BrowserRouter as Router, Routes, Route, useLocation } from 'react-router-dom';
 import Login from './pages/Login';
 import Dashboard from './pages/Dashboard';
@@ -12,9 +11,9 @@ import Atencion from './pages/Atencion';
 
 import Sidebar from './components/Sidebar';
 
-// 2. MODIFICAMOS EL LAYOUT PARA QUE DETECTE EL CAMBIO DE PÁGINA 
+// . MODIFICAMOS EL LAYOUT PARA QUE DETECTE EL CAMBIO DE PÁGINA 
 const Layout = ({ children }) => {
-    const location = useLocation(); // Obtenemos la ruta actual (ej: "/clientes")
+    const location = useLocation(); 
     
     return (
         <div className="layout-wrapper">

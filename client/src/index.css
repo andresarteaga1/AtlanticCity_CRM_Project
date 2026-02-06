@@ -619,13 +619,13 @@ sidebar side bar sidebar
    ESTILOS DEL MÓDULO DE CAJA (CORREGIDO)
    ========================================= */
 
-/* 1. EL CONTENEDOR PRINCIPAL (La solución a la pantalla blanca) */
+
 .caja-container {
-  background-color: #121212; /* Fondo NEGRO PROFUNDO */
-  min-height: 100vh;         /* Ocupa toda la altura de la pantalla */
-  width: 100%;               /* Ocupa todo el ancho */
+  background-color: #121212; 
+  min-height: 100vh;        
+  width: 100%;              
   padding: 2rem;
-  color: white;              /* Texto blanco */
+  color: white;              
   box-sizing: border-box;
   animation: fadeIn 0.5s ease-in;
 }
@@ -639,20 +639,20 @@ sidebar side bar sidebar
 }
 
 .caja-subtitle {
-  color: #888; /* Gris suave */
+  color: #888; 
   margin-bottom: 2rem;
 }
 
 /* 2. GRID DE 2 COLUMNAS */
 .caja-grid {
   display: grid;
-  grid-template-columns: 1fr 1fr; /* Dos columnas iguales */
+  grid-template-columns: 1fr 1fr; 
   gap: 2rem;
 }
 
 @media (max-width: 768px) {
   .caja-grid {
-    grid-template-columns: 1fr; /* En celular se vuelve una sola columna */
+    grid-template-columns: 1fr; 
   }
 }
 
