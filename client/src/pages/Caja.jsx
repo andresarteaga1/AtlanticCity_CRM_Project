@@ -18,7 +18,7 @@ const Caja = () => {
         setClienteEncontrado(null);
 
         try {
-            const response = await axios.get(`http://https://atlanticcity-crm-project.onrender.com/api/clientes/?search=${busqueda}`);
+            const response = await axios.get(`https://atlanticcity-crm-project.onrender.com/api/clientes/?search=${busqueda}`);
             
             if (response.data.length > 0) {
                 setClienteEncontrado(response.data[0]);
