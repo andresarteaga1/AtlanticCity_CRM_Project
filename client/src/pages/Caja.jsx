@@ -18,7 +18,7 @@ const Caja = () => {
         setClienteEncontrado(null);
 
         try {
-            const response = await axios.get(`http://127.0.0.1:8000/api/clientes/?search=${busqueda}`);
+            const response = await axios.get(`http://https://atlanticcity-crm-project.onrender.com/api/clientes/?search=${busqueda}`);
             
             if (response.data.length > 0) {
                 setClienteEncontrado(response.data[0]);
@@ -40,7 +40,7 @@ const Caja = () => {
         const nivelAnterior = clienteEncontrado.nivel;
 
         try {
-            const response = await axios.post('http://127.0.0.1:8000/api/transacciones/', {
+            const response = await axios.post('http://https://atlanticcity-crm-project.onrender.com/api/transacciones/', {
                 cliente: clienteEncontrado.idcliente, 
                 monto: monto,
                 tipo: tipo

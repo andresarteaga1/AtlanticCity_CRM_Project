@@ -31,7 +31,7 @@ const Promociones = () => {
 
     const obtenerPromociones = async () => {
         try {
-            const res = await axios.get("http://127.0.0.1:8000/api/promociones/");
+            const res = await axios.get("http://https://atlanticcity-crm-project.onrender.com/api/promociones/");
             setPromociones(res.data);
         } catch (error) {
             console.error("Error al cargar promociones", error);
@@ -41,7 +41,7 @@ const Promociones = () => {
     const handleGuardar = async (e) => {
         e.preventDefault();
         try {
-            await axios.post("http://127.0.0.1:8000/api/promociones/", nuevaPromo);
+            await axios.post("http://https://atlanticcity-crm-project.onrender.com/api/promociones/", nuevaPromo);
             Swal.fire({
                 title: "¡Creada!",
                 text: "Campaña registrada correctamente.",
@@ -77,7 +77,7 @@ const Promociones = () => {
 
         if (result.isConfirmed) {
             try {
-                await axios.delete(`http://127.0.0.1:8000/api/promociones/${id}/`);
+                await axios.delete(`http://https://atlanticcity-crm-project.onrender.com/api/promociones/${id}/`);
                 obtenerPromociones();
                 Swal.fire({
                     title: "Eliminado",

@@ -23,7 +23,7 @@ const Atencion = () => {
 
     const cargarTickets = async () => {
         try {
-            const response = await axios.get('http://127.0.0.1:8000/api/atencion/');
+            const response = await axios.get('http://https://atlanticcity-crm-project.onrender.com/api/atencion/');
             setTickets(response.data.tickets);
             setEficacia(response.data.kpi_eficacia);
         } catch (error) {
@@ -33,7 +33,7 @@ const Atencion = () => {
 
     const handleGuardarTicket = async () => {
         try {
-            await axios.post('http://127.0.0.1:8000/api/atencion/', nuevoTicket);
+            await axios.post('http://https://atlanticcity-crm-project.onrender.com/api/atencion/', nuevoTicket);
 
             Swal.fire({
                 icon: 'success',
@@ -60,7 +60,7 @@ const Atencion = () => {
 
     const cambiarEstado = async (id, nuevoEstado) => {
         try {
-            await axios.patch(`http://127.0.0.1:8000/api/atencion/${id}/actualizar/`, {
+            await axios.patch(`http://https://atlanticcity-crm-project.onrender.com/api/atencion/${id}/actualizar/`, {
                 estado: nuevoEstado
             });
             
@@ -100,7 +100,7 @@ const Atencion = () => {
         }).then(async (result) => {
             if (result.isConfirmed) {
                 try {
-                    await axios.delete(`http://127.0.0.1:8000/api/atencion/${id}/eliminar/`);
+                    await axios.delete(`http://https://atlanticcity-crm-project.onrender.com/api/atencion/${id}/eliminar/`);
                     
                     Swal.fire({
                         title: 'Eliminado',

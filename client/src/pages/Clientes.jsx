@@ -34,7 +34,7 @@ const Clientes = () => {
     try {
       setCargando(true);
       // 4. LÓGICA DE BÚSQUEDA EN LA URL
-      let url = "http://127.0.0.1:8000/api/clientes/";
+      let url = "http://https://atlanticcity-crm-project.onrender.com/api/clientes/";
       if (busqueda.trim() !== "") {
         url += `?search=${encodeURIComponent(busqueda)}`;
       }
@@ -63,7 +63,7 @@ const Clientes = () => {
 
     if (result.isConfirmed) {
         try {
-            await axios.delete(`http://127.0.0.1:8000/api/clientes/${id}/`);
+            await axios.delete(`http://https://atlanticcity-crm-project.onrender.com/api/clientes/${id}/`);
             obtenerClientes(); // Recargar lista
             Swal.fire({title:'Eliminado', icon:'success', background: '#1a1a1a', color: '#fff', timer: 1500, showConfirmButton: false});
         } catch (error) {
@@ -86,7 +86,7 @@ const Clientes = () => {
 
     if (result.isConfirmed) {
         try {
-            await axios.patch(`http://127.0.0.1:8000/api/clientes/${id}/`, { accion: 'vetar' });
+            await axios.patch(`http://https://atlanticcity-crm-project.onrender.com/api/clientes/${id}/`, { accion: 'vetar' });
             obtenerClientes(); // Recargar lista
             Swal.fire({title:'VETADO', icon:'success', background: '#1a1a1a', color: '#fff', timer: 1500, showConfirmButton: false});
         } catch (error) {
@@ -99,7 +99,7 @@ const Clientes = () => {
   const handleGuardar = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://127.0.0.1:8000/api/clientes/", nuevoCliente);
+      await axios.post("http://https://atlanticcity-crm-project.onrender.com/api/clientes/", nuevoCliente);
       
       // ÉXITO
       Swal.fire({

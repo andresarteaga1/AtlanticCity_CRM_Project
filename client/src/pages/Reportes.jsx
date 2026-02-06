@@ -19,7 +19,7 @@ const Reportes = () => {
             const inicio = inicioOverride !== null ? inicioOverride : fechaInicio;
             const fin = finOverride !== null ? finOverride : fechaFin;
 
-            let url = 'http://127.0.0.1:8000/api/reportes/data/';
+            let url = 'http://https://atlanticcity-crm-project.onrender.com/api/reportes/data/';
             
             if (inicio && fin) {
                 url += `?inicio=${inicio}&fin=${fin}`;
@@ -50,7 +50,7 @@ const Reportes = () => {
     };
 
     const descargarExcel = () => {
-        let url = 'http://127.0.0.1:8000/api/reportes/excel/';
+        let url = 'http://https://atlanticcity-crm-project.onrender.com/api/reportes/excel/';
         if (fechaInicio && fechaFin) {
             url += `?inicio=${fechaInicio}&fin=${fechaFin}`;
         }
