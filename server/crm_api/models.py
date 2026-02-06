@@ -24,7 +24,7 @@ class Cliente(models.Model):
     es_vetado = models.BooleanField(default=False) 
 
     class Meta:
-        managed = False 
+        managed = True
         db_table = 'tb_cliente'
 
     def __str__(self):
@@ -112,7 +112,7 @@ class AtencionCliente(models.Model):
     estado = models.CharField(max_length=50)
 
     class Meta:
-        managed = False
+        managed = True
         db_table = 'tb_atencion_cliente'
         verbose_name = 'Atención'
         verbose_name_plural = 'Atenciones'
